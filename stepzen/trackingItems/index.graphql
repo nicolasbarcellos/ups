@@ -1,0 +1,17 @@
+type ItemsEntry {
+  item_id: Int
+  name: String
+  price: Float
+  quantity: Int
+}
+type TrackingItemsList {
+  customer_id: String
+  items: [ItemsEntry]
+}
+
+type Query {
+  getTrackingItemById(id: ID!): TrackingItemsList
+    @rest(
+      endpoint: "https://ups-clone-6c29a-default-rtdb.firebaseio.com/trackingItems/$id.json"
+    )
+}
